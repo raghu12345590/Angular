@@ -1,0 +1,13 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+ <div class="container">
+  <a class="nav-link" routerLink="/home">Home</a>
+  <a class="nav-link" routerLink="/about">About</a>
+  <a class="nav-link" routerLink="/employee">Employee</a>
+  <a class="nav-link" routerLink="/customer">Customer</a>
+  <a class="nav-link" routerLink="/switch">Switch</a>
+  <a class="nav-link" [routerLink]="['route',1]">Route Paramter</a>
+ </div>
+  
+   
+</nav>
+<router-outlet></router-outlet>

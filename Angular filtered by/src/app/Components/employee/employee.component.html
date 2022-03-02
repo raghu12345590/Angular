@@ -1,0 +1,67 @@
+<p>employee works!</p>
+
+<p style="font-weight: 900; color: brown;">Built in Pipes</p><br/>
+Currency:{{56789|currency: 'Rs.'}} <br>
+Percentage:{{0.45678|percent}}<br>
+Slice:{{months|slice:2:6}}<br>
+Date Pipe: {{todaydate|date:'d/m/y'}}<br/>
+jsonValue:{{jsonValue|json}}
+<br/><br/>
+<div class='row'>
+    <div class='col-md-2'>Filter by Name:</div>
+    <div class='col-md-4'>
+        <input type='text'
+               [(ngModel)]='filteredString'/>
+    </div>
+    <div class='col-md-2'>Filter by ID:</div>
+    <div class='col-md-4'>
+        <input type='text'
+               [(ngModel)]='filteredId'/>
+    </div>
+
+</div>
+<div class='row'>
+    <div class='col-md-6'>
+        <h4>Filtered by: {{filteredString}}</h4>
+    </div>
+</div>
+<h3> Employee Table</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Gender</th>
+            <th>Is Active</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employees of details | filterpipe:filteredString | filterid:filteredId">
+            <td>{{employees.id}}</td>
+            <td>{{employees.name|uppercase|assignInitial: employees.gender}}</td>
+                <td>{{employees.location|titlecase}}</td>
+                    <td>{{employees.gender}}</td>
+                    <td>{{employees.isActive?'YES' : 'NO'}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<input type="text" [(ngModel)]="empid">
+<button type="button" (click)="redirect()"> Go To Router Component</button>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+     <a class="nav-link" routerLink="details">Employee Details</a>
+     <a class="nav-link" routerLink="add">Add Employee</a>
+     <a class="nav-link" routerLink="edit">Edit Employee</a>
+    </div>
+          
+   </nav>
+   <router-outlet></router-outlet>
+
+   <button type="button" (click)="getQueryParamData()">Get Values</button> <br/>
+   Employee ID: {{ID}}<br/>
+   Name: {{Name}}<br/>
+   Location: {{location}} 
+   
